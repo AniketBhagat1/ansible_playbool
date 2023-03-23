@@ -18,17 +18,6 @@
           action: apt pkg=openjdk-11-jdk state=absent
 
         ############install tomcat##########
-        - name: create directory
-          action: file path=/home/aniket/tomcat state=directory
-        - name: Install tomcat
-          action: get_url url=https://downloads.apache.org/tomcat/tomcat-9/v9.0.73/bin/apache-tomcat-9.0.73.zip dest=/home/aniket/tomcat
-        - name: install unzip
-          action: apt name=unzip state=present
-        - name: unzip tomcat
-          action: unarchive src=/home/aniket/tomcat/apache-tomcat-9.0.73.zip dest=/home/aniket/tomcat remote_src=yes
-
-        - name: giving ownership to tomcat
-          action: file path=/home/aniket/tomcat/apache-tomcat-9.0.73 state=directory owner=aniket group=aniket mode=777 recurse=yes
         - name: Start tomcat
           command: "nohup /home/aniket/tomcat/apache-tomcat-9.0.73/bin/shutdown.sh"
 
