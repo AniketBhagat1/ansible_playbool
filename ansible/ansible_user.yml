@@ -1,0 +1,17 @@
+- hosts: dev
+  user: aniket
+  become: yes
+  connection: ssh
+  gather_facts: yes
+  tasks:
+
+        - name: add groups
+          group:
+                name: devops
+                state: present
+        - name: Add user
+          ansible.builtin.user:
+                 name: john
+                 uid: 1020
+                 group: devops
+                 shell: /bin/bash

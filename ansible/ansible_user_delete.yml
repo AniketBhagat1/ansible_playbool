@@ -1,0 +1,11 @@
+- hosts: dev
+  user: aniket
+  become: yes
+  connection: ssh
+  gather_facts: yes
+  tasks:
+        - name: Remove user
+          user:
+                name: john
+                state: absent
+                remove: yes
